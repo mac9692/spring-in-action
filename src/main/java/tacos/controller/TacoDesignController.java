@@ -1,8 +1,10 @@
 package tacos.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import tacos.dto.Ingredient;
 import tacos.dto.Taco;
@@ -14,6 +16,7 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("design")
+@Slf4j
 public class TacoDesignController {
 
     @GetMapping
@@ -42,5 +45,12 @@ public class TacoDesignController {
 
     private List<Ingredient> filterByType(List<Ingredient> ingredientList, IngredientType type) {
         return ingredientList.stream().filter(x -> x.type().equals(type)).collect(Collectors.toList());
+    }
+
+    @PostMapping
+    public String processDesign(Taco request) {
+        log.info("Prrrrrrrocessing Design : " + request);
+
+        return "redirect:/orders/current";
     }
 }

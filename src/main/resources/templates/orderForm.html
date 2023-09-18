@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Taco Cloud</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<form method="post" th:action="@{/orders}" th:object="${order}">
+    <h1>주문한 타코 완성!</h1>
+    <img th:src="@{/images/taco.webp}"/>
+    <a th:href="@{/design}" id="another">다시 재료 정하기</a><br/>
+
+    <div th:if="${#fields.hasErrors()}">
+        <span class="validationError">
+            Please Correct the problems below and resubmit.
+        </span>
+    </div>
+
+    <h3>타코 주문서</h3>
+</form>
+</body>
+</html>
