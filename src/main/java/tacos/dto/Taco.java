@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -12,4 +13,6 @@ import java.util.List;
 public class Taco {
     private String name;
     private List<String> ingredients;
+    private Long id;
+    private Date createdAt;
 }
